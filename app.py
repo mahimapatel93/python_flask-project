@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     version = os.environ.get("APP_VERSION", "v1")  # GitHub Action se env variable bhi bhej sakte ho
-    return f"Flask app deployed via GitHub Actions, version: {version}"
+    return "🚀 Flask app successfully updated and deployed via GitHub Actions! Enjoy the new version.", version: {version}"
 
 
 if __name__ == "__main__":
