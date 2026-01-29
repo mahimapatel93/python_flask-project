@@ -43,7 +43,7 @@ jobs:
             sudo pip3 install -r requirements.txt
 
             # Stop old Flask app if running
-            pkill -f app.py || true
+            # pkill -f app.py || true
 
             # Start Flask app in background
             nohup python3 app.py > flask.log 2>&1 &
