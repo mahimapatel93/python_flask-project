@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "updated Flask sample application on azure hghapp service updated verrsion-4"
+    version = os.environ.get("APP_VERSION", "v1")  # GitHub Action se env variable bhi bhej sakte ho
+    return f"Flask app deployed via GitHub Actions, version: {version}"
 
 
 if __name__ == "__main__":
