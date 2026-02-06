@@ -121,7 +121,7 @@ Verify sonar can execute scanner:
     [sonar@ip-172-31-28-135 ~]$ git clone https://github.com/mahimapatel93/python_flask-project.git
       cd python_flask-project
 
- # project folder inside add file vi sonar-project.properties---------------
+ -------- project folder inside add file vi sonar-project.properties---------------
      paste this code---
 
     sonar.projectKey=flask-app
@@ -140,7 +140,7 @@ Push to GitHub:
 
     git add sonar-project.properties
     git commit -m "Add SonarQube configuration"
-    git push
+    git push main origin
     
     
  ---------foder inside paste sonar project token 
@@ -235,6 +235,7 @@ The pipeline uses the repository URL directly:
 
 Pipeline definition:
 
+
     pipeline {
         agent any
 
@@ -285,7 +286,7 @@ Pipeline definition:
 
 ---
 
-## Running the Pipeline
+------Running the Pipeline
 
 Open Jenkins:
 
