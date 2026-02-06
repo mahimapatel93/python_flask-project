@@ -40,42 +40,46 @@ Project structure after adding configuration:
 
 ---
 ## server
-required 4gb ram and 2 cpu's
-dependency: java11 or 17
-req: t2.medium
-port: 9000
+
+    required 4gb ram and 2 cpu's
+    dependency: java11 or 17
+    req: t2.medium
+    port: 9000
 
 STEUP:  sonerQube setup:--
-yum list java*
-java11 or 17
+       
+    yum list java*
+    java11 or 17
 
-cd /opt/ #switch to opt directory
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.6.50800.zip
-sudo unzip sonarqube-8.9.6.50800.zip
+    cd /opt/ #switch to opt directory
+     sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.6.50800.zip
+     sudo unzip sonarqube-8.9.6.50800.zip
 
 #sonarqube has to run with user only 
 
-sudo useradd sonar
-sudo chown sonar:sonar sonarqube-8.9.6.50800 -R
-sudo chmod 777 sonarqube-8.9.6.50800 -R
+     sudo useradd sonar
+     sudo chown sonar:sonar sonarqube-8.9.6.50800 -R
+     sudo chmod 777 sonarqube-8.9.6.50800 -R
 
 
 -------------passwd sonar (create password)
-su - sonar   (log in as sonar)
-password:--
+    
+    su - sonar   (log in as sonar)
+    password:--
 
-sh /opt/sonarqube-8.9.6.50800/bin/linux-x86-64/sonar.sh start
-sh /opt/sonarqube-8.9.6.50800/bin/linux-x86-64/sonar.sh status
+    sh /opt/sonarqube-8.9.6.50800/bin/linux-x86-64/sonar.sh start
+    sh /opt/sonarqube-8.9.6.50800/bin/linux-x86-64/sonar.sh status
 
-#to access 
-public-ip:9000
-user=admin & password=admin
+ #to access 
+        
+    public-ip:9000
+    user=admin & password=admin
 
 note : after login we need to change our existing password to custom password 
 ---------------------------------------------------------------------
 
-inside sonerqube got to project and create project then 
-select language and jenerate token  (language--java) 
+    inside sonerqube got to project and create project then 
+     select language and jenerate token  (language--java) 
 
 --------------------------------- other programming languages process------------------------------------
 
