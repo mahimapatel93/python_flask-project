@@ -312,63 +312,64 @@ Open SonarQube:
 
 
 ##  otherwise use this pipeline    for (firt first format)
+
           
-pipeline {
-    agent any
+    pipeline {
+       agent any
 
-    environment {
-        SONARQUBE = 'sonarji'  // Your Jenkins SonarQube server name
-    }
+       environment {
+         SONARQUBE = 'sonarji'  // Your Jenkins SonarQube server name
+      }
 
-    stages {
+      stages {
 
-        stage('Checkout Code') {
+          stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/CloudTechDevOps/docker_python_flask-project.git'
-            }
-        }
+                  git branch: 'main', url: 'https://github.com/CloudTechDevOps/docker_python_flask-project.git'
+              }
+          }
 
-        stage('Install Dependencies') {
+          stage('Install Dependencies') {
             steps {
-                sh '''
-                python3 -m venv venv
-                . venv/bin/activate
-                pip install -r requirements.txt || true
-                '''
-            }
-        }
+                  sh '''
+                  python3 -m venv venv
+                  . venv/bin/activate
+                  pip install -r requirements.txt || true
+                 '''
+              }
+          }
 
-        stage('Run Tests') {
-            steps {
-                sh '''
-                . venv/bin/activate
-                pip install pytest || true
-                pytest || true
-                '''
-            }
-        }
+          stage('Run Tests') {
+              steps {
+                  sh '''
+                  . venv/bin/activate
+                  pip install pytest || true
+                  pytest || true
+                  '''
+              }
+          }
 
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar-scanner'
-                    withSonarQubeEnv('sonarji') {
-                        sh """
-                        ${scannerHome}/bin/sonar-scanner \
-                          -Dsonar.projectKey=flask-app \
-                          -Dsonar.projectName=flask-app \
-                          -Dsonar.projectVersion=1.0 \
-                          -Dsonar.sources=. \
-                          -Dsonar.exclusions=venv/**,__pycache__/**,tests/** \
-                          -Dsonar.host.url=$SONAR_HOST_URL \
-                          -Dsonar.login=$SONAR_AUTH_TOKEN
-                        """
+         stage('SonarQube Analysis') {
+              steps {
+                  script {
+                      def scannerHome = tool 'sonar-scanner'
+                      withSonarQubeEnv('sonarji') {
+                          sh """
+                          ${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=flask-app \
+                            -Dsonar.projectName=flask-app \
+                            -Dsonar.projectVersion=1.0 \
+                            -Dsonar.sources=. \
+                            -Dsonar.exclusions=venv/**,__pycache__/**,tests/** \
+                            -Dsonar.host.url=$SONAR_HOST_URL \
+                            -Dsonar.login=$SONAR_AUTH_TOKEN
+                          """
+                       }
                     }
                 }
             }
         }
-    }
-    }
+     }
 
 
 
